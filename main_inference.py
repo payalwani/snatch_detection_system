@@ -13,7 +13,7 @@ from inference.motion_branch import MotionBranch
 from inference.pose_branch import PoseBranch
 from inference.context_branch import ContextBranch
 from core.fusion import FusionEngine
-from inference.llm_reporter import trigger_llm_report_async
+
 
 def process_stream(source: str):
     os.makedirs('outputs/videos', exist_ok=True)
@@ -116,8 +116,8 @@ def process_stream(source: str):
                     color = (0, 0, 255)
                     label = "ALERT: SNATCH DETECTED!"
                     print(f"[ALERT] Frame {frame_id} - Snatch Detected! (Vote: {payload['vote']:.2f})")
-                    # Fire Generative AI Report asynchronously
-                    trigger_llm_report_async(payload, frame_id, tech_str)
+                    # Fire Generative AI Report asynchronously (Removed as per user request)
+                    # trigger_llm_report_async(payload, frame_id, tech_str)
                 else:
                     flags.append(payload)
                     color = (0, 165, 255)
